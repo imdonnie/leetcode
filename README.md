@@ -1,2 +1,2 @@
 # leetcode
-This is a repo for donni's work on leetcode.
+This is a repo for donnie's work on leetcode.
