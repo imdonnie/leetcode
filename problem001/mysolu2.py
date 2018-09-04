@@ -1,15 +1,15 @@
 import argparse
 import sys
 
+# list.index has several option args
+# including 'beg', which decides where the function begins
+# the following use of list.index has 'beg=index_1+1', to avoid getting the same index as i
+
 class Solution:
-	"""docstring for Solution"""
 	def twoSum(self, nums, target):
 		for i in range(len(nums)):
-			# print(nums[i])
-			for j in range(i + 1, len(nums)):	
-				# print(nums[j])
-				if nums[i]+nums[j] == target:
-					return i, j
+			if target - nums[i] in nums[i+1:]:			
+				return i, list.index(nums, target - nums[i], i+1)
 
 if __name__ == '__main__':
 
