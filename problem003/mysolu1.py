@@ -5,6 +5,8 @@ import sys
 # including 'beg', which decides where the function begins
 # the following use of list.index has 'beg=index_1+1', to avoid getting the same index as i
 
+# 动态规划解法（虽然结果并不好）
+# 接单分析，题目要求寻找一个字符串的最长连续子串的长度，分析可知，最大值=max{包含开头的，包含末尾的，两侧都不含的}
 class Solution:
 	def lengthOfLongestSubstring(self, s):
 		if len(s) == 0:
