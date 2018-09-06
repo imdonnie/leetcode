@@ -1,12 +1,16 @@
 import sys
-import re
+import operator
 class Solution:
     def isPalindrome(self, x):
         num_list = list(str(x))
-        return num_list
+        r_num_list = num_list.copy()
+        num_list.reverse()
+        print(num_list)
+        print(r_num_list)
+        return operator.eq(num_list, r_num_list)
         
 if __name__ == '__main__':
-    str = int(sys.argv[1])
+    input_str = int(sys.argv[1])
     solution = Solution()
-    result = solution.myAtoi(str)
+    result = solution.isPalindrome(input_str)
     print(result)
