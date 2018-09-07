@@ -4,7 +4,8 @@ import operator
 class Solution:
     def threeSum(self, nums):
         nums = sorted(nums)
-        print(nums)
+        min_diff = infinite
+        print(min_diff)
         result = []
         if operator.eq(nums, []):
             return []
