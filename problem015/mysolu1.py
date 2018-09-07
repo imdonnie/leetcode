@@ -2,28 +2,43 @@ import sys
 
 import operator
 class Solution:
-    def longestCommonPrefix(self, strs):
-        if '' in strs:
-            return ''
-        if len(strs) == 0 or len(strs) == 1:
-            return ''.join(strs)
-        result = ''
-        ss = min(strs, key=len)
-        for s in strs:
-            result = self.compareTwo(ss, s)
-            ss = result
-        return result
+    def threeSum(self, nums):
+        nums = sorted(nums)
+        print(nums)
+        result = []
+        if operator.eq(nums, []):
+            return []
+        if nums[0] > 0 or nums[-1] < 0:
+            return []
+        for i, num in enumerate(nums):
+            if i == 0 or nums[i] > nums[i-1]:
+                left_p = i + 1
+                right_p = len(nums) - 1
 
-    def compareTwo(slef, str1, str2):
-        result = ''
-        loop_time = min(len(str1), len(str2)) + 1
-        for i in range(loop_time):
-            print('sub1:{0}, sub2:{1}'.format(str1[:i], str2[:i]))
-            result = str1[:i] if operator.eq(str1[:i], str2[:i]) else result
+                # print('i:{0}\tl:{1}\tr:{2}\t {3}\t{4}\t{5}'.format(nums[i], nums[left_p], nums[right_p], i, left_p, right_p))
+                while left_p < right_p:
+                    print('i:{0}\tl:{1}\tr:{2}\t {3}\t{4}\t{5}'.format(nums[i], nums[left_p], nums[right_p], i, left_p, right_p))
+
+                    # 核心逻辑：双指针向中间逼近，遇到符合条件就添加
+                    # 若<0，说明当前值不足，左值过小，因此左指针向右移动；若>0，说明当前值超出，右值过大，因此右指针向左移动
+                    sum_3 = nums[i] + nums[left_p] + nums[right_p]
+                    if sum_3 == 0:
+                        result.append([nums[i], nums[left_p], nums[right_p]])
+                        left_p += 1
+                        right_p -= 1
+                        # 去重
+                        while nums[left_p] == nums[left_p - 1] and left_p < right_p:
+                            left_p += 1
+                        while nums[right_p] == nums[right_p + 1] and left_p < right_p:
+                            right_p -= 1
+                    if sum_3 < 0:
+                        left_p += 1
+                    elif sum_3 > 0:
+                        right_p -= 1
         return result
 
 if __name__ == '__main__':
-    s = sys.argv[1].split(',')
+    s = [-1,0,1,2,-1,-4]
     solution = Solution()
-    result = solution.longestCommonPrefix(s)
+    result = solution.threeSum(s)
     print(result)
