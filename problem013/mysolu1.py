@@ -1,3 +1,4 @@
+# 时间复杂度O(n2)
 import sys
 
 class Solution:
