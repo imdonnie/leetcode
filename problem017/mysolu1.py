@@ -3,18 +3,25 @@ import sys
 import operator
 class Solution:
     def letterCombinations(self, digits):
-        result = []
-        digit_chars_map = {'2':'abc', '3':'def', '4':'ghi', '5':'jkl', '6':'mno', '7':'pqrs', '8':'tuv', '9':'wxyz'}
-        num_1 = digits[0]
-        num_2 = digits[1]
-        chars_1 = digit_chars_map[num_1]
-        chars_2 = digit_chars_map[num_2]
-        for i in range(len(chars_1)):
-            for j in range(len(chars_2)):
-                comb = chars_1[i]+chars_2[j]
-                print(comb)
-                result.append(comb)
-        return result
+        if not digits:
+            return []
+        digit2chars = {
+            '2': 'abc',
+            '3': 'def',
+            '4': 'ghi',
+            '5': 'jkl',
+            '6': 'mno',
+            '7': 'pqrs',
+            '8': 'tuv',
+            '9': 'wxyz'
+        }
+        res = [ i for i in digit2chars[digits[0]]]
+        print(res)
+        for i in digits[1:]:
+            print('i:{0}, res:{1}, digit2chars[i]:{2}'.format(i, res, digit2chars[i]))
+            res = [ m+n for m in res for n in digit2chars[i] ]
+            print (res)
+        return res   
 
 
 
