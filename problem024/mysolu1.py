@@ -1,19 +1,23 @@
+# Definition for singly-linked list.
+# class ListNode:
+#     def __init__(self, x):
+#         self.val = x
+#         self.next = None
+
 class Solution:
-    def mergeTwoLists(self, l1, l2):
-        """
-        :type l1: ListNode
-        :type l2: ListNode
-        :rtype: ListNode
-        """
-        if not l1 and not l2:
-            return
-        res = []
-        q1, q2 = l1, l2
-        while q1:
-            res.append(q1)
-            q1 = q1.next    
-        while q2:
-            res.append(q2) 
-            q2 =q2.next         
-        res = sorted(res, key=lambda x:x.val)
-        return [i.val for i in res] 
+    def swapPairs(self, head):
+        v_head = ListNode('head')
+        v_head.next = head
+        count = 0
+        p = v_head
+        while p and p.next:
+            # print('{0}->{1}->{2}'.format(p.val, p.next.val, p.next.next.val))
+            p_n = p.next
+            if p.next.next is None:
+                return v_head.next
+            else:
+                p.next = p_n.next
+                p_n.next = p.next.next
+                p.next.next = p_n          
+                p = p.next.next if p.next.next else p
+        return v_head.next

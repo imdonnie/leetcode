@@ -1,19 +1,14 @@
 class Solution:
-    def mergeTwoLists(self, l1, l2):
+    def removeDuplicates(self, nums):
         """
-        :type l1: ListNode
-        :type l2: ListNode
-        :rtype: ListNode
+        :type nums: List[int]
+        :rtype:int
         """
-        if not l1 and not l2:
-            return
-        res = []
-        q1, q2 = l1, l2
-        while q1:
-            res.append(q1)
-            q1 = q1.next    
-        while q2:
-            res.append(q2) 
-            q2 =q2.next         
-        res = sorted(res, key=lambda x:x.val)
-        return [i.val for i in res] 
+        i = 0
+        while i < len(nums):
+            while i < len(nums)-1 and nums[i] == nums[i+1]:
+                nums.remove(nums[i])
+            # print(nums)
+            i += 1
+        return len(nums)
+        
