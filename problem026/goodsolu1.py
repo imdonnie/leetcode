@@ -1,26 +1,17 @@
-
-# Definition for singly-linked list.
-# class ListNode:
-#     def __init__(self, x):
-#         self.val = x
-#         self.next = None
- 
 class Solution:
-    def mergeTwoLists(self, l1, l2):
+    def removeDuplicates(self, nums):
         """
-        :type l1: ListNode
-        :type l2: ListNode
-        :rtype: ListNode
+        :type nums: List[int]
+        :rtype: int
         """
-        if not l1 and not l2:
-            return
-        res = []
-        q1, q2 = l1, l2
-        while q1:
-            res.append(q1)
-            q1 = q1.next    
-        while q2:
-            res.append(q2) 
-            q2 =q2.next         
-        res = sorted(res, key=lambda x:x.val)
-        return [i.val for i in res]
+        if len(nums) < 2:
+            return len(nums)
+        # nums >= 2
+        index = 1
+        pre = nums[0]
+        for i in range(len(nums)):
+            if pre != nums[i]:
+                pre = nums[i]
+                nums[index] = pre
+                index += 1
+        return index
