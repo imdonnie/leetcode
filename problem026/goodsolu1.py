@@ -6,8 +6,7 @@ class Solution:
         """
         if len(nums) < 2:
             return len(nums)
-        # nums >= 2
-        index = 1
+        index = 1 
         pre = nums[0]
         for i in range(len(nums)):
             if pre != nums[i]:
