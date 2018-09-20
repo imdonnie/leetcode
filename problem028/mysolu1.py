@@ -1,19 +1,26 @@
 class Solution:
-    def mergeTwoLists(self, l1, l2):
+    def strStr(self, haystack, needle):
         """
-        :type l1: ListNode
-        :type l2: ListNode
-        :rtype: ListNode
+        :type haystack: str
+        :type needle: str
+        :rtype: int
         """
-        if not l1 and not l2:
-            return
-        res = []
-        q1, q2 = l1, l2
-        while q1:
-            res.append(q1)
-            q1 = q1.next    
-        while q2:
-            res.append(q2) 
-            q2 =q2.next         
-        res = sorted(res, key=lambda x:x.val)
-        return [i.val for i in res] 
+        # hay_list = list(haystack)
+        # needle_list = list(needle)
+        entrance = i = j = 0
+        flag = 0
+        ln = len(needle)
+        while i+ln <= len(haystack) :
+            if haystack[i:i+ln] == needle:
+                return i
+            else:
+                i += 1
+        return -1
+
+if __name__ == '__main__':
+    hay = 'aab'
+    needle = "ab"
+    s = Solution()
+    for i in range(1000):
+        r = s.strStr(hay, needle)
+    print(r)
